@@ -1,0 +1,17 @@
+{
+  "name": "melodia-secreta",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Juego para adivinar canciones con el reproductor de YouTube",
+  "scripts": {
+    "build": "esbuild src/main.ts --bundle --outfile=dist/main.js --target=es2020 --sourcemap",
+    "watch": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "start": "npm run build && serve -l 5500 ."
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.2",
+    "serve": "^14.2.0",
+    "typescript": "^6.0.3"
+  }
+}

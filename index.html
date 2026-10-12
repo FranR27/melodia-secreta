@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Melodía Secreta</title>
+  <meta name="description" content="Adiviná la canción con 6 intentos: cada fallo o salto desbloquea más segundos.">
+  <!-- Pegá aquí la URL pública del Worker, terminada en /api/catalog. Vacío = catálogo local. -->
+  <meta name="melodia-api-base" content="">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Gloock&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <main class="app">
+    <header class="top">
+      <div class="brand">
+        <h1>Melodía</h1>
+        <p>Adiviná la canción</p>
+      </div>
+      <div class="stats">
+        <div class="streak"><span class="lbl">Racha</span><span class="num" id="streak">0</span></div>
+        <button class="icon-btn" id="infoBtn" type="button" aria-label="Cómo se juega" aria-expanded="false" aria-controls="info">?</button>
+      </div>
+    </header>
+
+    <section class="info" id="info" hidden>
+      <p>Escuchás el comienzo de una canción y tenés 6 intentos. Cada intento fallido o saltado desbloquea más segundos. Escribí el título y elegilo de la lista.</p>
+      <div class="scale">Segundos desbloqueados: 1 · 2 · 4 · 7 · 11 · 16</div>
+      <div class="legend">
+        <span style="--c: var(--bad)">Incorrecta</span>
+        <span style="--c: var(--close)">Mismo artista</span>
+        <span style="--c: var(--good)">Correcta</span>
+      </div>
+      <p>El video de YouTube se mantiene tapado hasta que termina la ronda.</p>
+    </section>
+
+    <ol class="guesses" id="guesses"></ol>
+
+    <div class="stage" id="stage" data-revealed="false" data-playing="false" data-loading="true">
+      <div class="video"><div id="player"></div></div>
+      <div class="veil" aria-hidden="true">
+        <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+        <span id="veilText">Cargando reproductor…</span>
+      </div>
+    </div>
+
+    <div class="timeline" id="timeline" role="img">
+      <div class="fill" id="fill"></div>
+    </div>
+
+    <div class="controls" id="controls">
+      <button class="play" id="play" type="button" aria-label="Reproducir"></button>
+      <div class="clock"><b id="clockNow">0:00</b><span>/</span><span id="clockMax">0:01</span></div>
+      <button class="skip" id="skip" type="button"></button>
+    </div>
+
+    <div class="search" id="search">
+      <input id="q" type="text" placeholder="Buscá una canción o artista…" autocomplete="off" spellcheck="false" aria-label="Buscar una canción o artista">
+      <ul class="opts" id="opts" role="listbox" aria-label="Resultados"></ul>
+    </div>
+
+    <section class="result" id="result" hidden aria-live="polite">
+      <div class="verdict" id="verdict"></div>
+      <h2 class="answer" id="answer"></h2>
+      <p class="answer-by" id="answerBy"></p>
+      <div class="result-actions">
+        <button class="btn" id="fullBtn" type="button">Escuchar completa</button>
+        <button class="btn primary" id="nextBtn" type="button">Otra canción</button>
+      </div>
+    </section>
+
+    <p class="status" id="status" role="status" hidden></p>
+  </main>
+
+  <script src="dist/main.js" defer></script>
+</body>
+</html>
