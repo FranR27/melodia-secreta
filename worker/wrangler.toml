@@ -1,0 +1,7 @@
+name = "melodia-secreta-catalog"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+[vars]
+# For production, replace * with exact origins separated by commas.
+ALLOWED_ORIGINS = "*"

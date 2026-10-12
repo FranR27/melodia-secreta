@@ -1,0 +1,15 @@
+name = "melodia-secreta-catalog"
+main = "index.js"
+compatibility_date = "2026-10-01"
+
+# Configure this secret with:
+#   npx wrangler secret put YOUTUBE_API_KEY
+# Optional but recommended persistent cache:
+# Create a KV namespace and then uncomment the binding below, replacing the id.
+# [[kv_namespaces]]
+# binding = "CATALOG_KV"
+# id = "REEMPLAZAR_CON_ID_DE_KV"
+
+[vars]
+# Use * for initial testing. For production, set the exact frontend origins separated by commas.
+ALLOWED_ORIGINS = "*"

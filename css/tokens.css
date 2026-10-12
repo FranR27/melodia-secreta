@@ -1,0 +1,51 @@
+/* Tokens de color y tipografía. Oscuro por defecto; claro si el sistema lo pide o data-theme="light". */
+:root {
+  color-scheme: dark;
+  --bg: #0f111c;
+  --surface: #171a2a;
+  --surface-2: #1f2338;
+  --ink: #eceef8;
+  --muted: #8d93b2;
+  --line: #2b3050;
+  --accent: #f0ba45;
+  --accent-ink: #1a1405;
+  --good: #4cc9a0;
+  --bad: #f0647a;
+  --close: #b79cff;
+
+  --font-display: 'Gloock', Georgia, 'Times New Roman', serif;
+  --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'DM Mono', ui-monospace, Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    color-scheme: light;
+    --bg: #edeff6;
+    --surface: #ffffff;
+    --surface-2: #e3e6f2;
+    --ink: #161a33;
+    --muted: #5a6082;
+    --line: #cbd0e3;
+    --accent: #e5a82a;
+    --accent-ink: #231a04;
+    --good: #14916b;
+    --bad: #c7324e;
+    --close: #6c4fd6;
+  }
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #edeff6;
+  --surface: #ffffff;
+  --surface-2: #e3e6f2;
+  --ink: #161a33;
+  --muted: #5a6082;
+  --line: #cbd0e3;
+  --accent: #e5a82a;
+  --accent-ink: #231a04;
+  --good: #14916b;
+  --bad: #c7324e;
+  --close: #6c4fd6;
+}
