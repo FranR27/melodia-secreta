@@ -8,8 +8,10 @@ const MAX_REMOTE_ENTRIES = 1500;
 
 let catalog: CatalogEntry[] = mergeCatalog(STATIC_CATALOG, []);
 
-export const normalize = (s: string): string =>
-  s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+// Función declarada (no const): se usa en el arranque del módulo, antes de llegar a esta línea.
+export function normalize(s: string): string {
+  return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().trim();
+}
 
 function validEntry(value: unknown): value is CatalogEntry {
   if (!value || typeof value !== 'object') return false;
