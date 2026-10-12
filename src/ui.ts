@@ -100,6 +100,7 @@ export class UI {
       const open = game.over || i <= game.stage;
       seg.classList.toggle('is-open', open);
       seg.classList.toggle('is-locked', !open);
+      seg.classList.toggle('is-current', !game.over && i === game.stage);
     });
     const inc = game.nextIncrement;
     this.el.skip.replaceChildren();
@@ -125,6 +126,7 @@ export class UI {
 
   setPlaying(on: boolean): void {
     this.el.stage.dataset.playing = String(on);
+    this.el.play.dataset.playing = String(on);
     this.el.play.innerHTML = on ? ICON_STOP : ICON_PLAY;
     this.el.play.setAttribute('aria-label', on ? 'Detener' : 'Reproducir');
     this.el.fullBtn.textContent = on ? 'Detener' : 'Escuchar completa';
@@ -147,8 +149,10 @@ export class UI {
   showResult(game: Game): void {
     const tries = game.guesses.length;
     this.el.verdict.className = `verdict ${game.won ? 'win' : 'lose'}`;
+    this.el.result.classList.toggle('is-win', game.won);
+    this.el.result.classList.toggle('is-lose', !game.won);
     this.el.verdict.textContent = game.won
-      ? `Correcto · ${tries} ${tries === 1 ? 'intento' : 'intentos'}`
+      ? `Correcto en ${tries} ${tries === 1 ? 'intento' : 'intentos'}`
       : 'Se acabaron los intentos';
     this.el.answer.textContent = game.song.title;
     this.el.answerBy.textContent = game.song.artist;
@@ -199,6 +203,7 @@ export class UI {
       const active = !game.over && i === game.guesses.length;
       const li = h('li', active ? 'row is-active' : 'row');
       if (g) li.dataset.kind = g.kind;
+      if (g && i === game.guesses.length - 1) li.classList.add('is-new');
       const main = h('span', 'main');
       let mark = '';
       if (g) {

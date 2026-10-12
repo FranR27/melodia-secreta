@@ -18,18 +18,26 @@
   <main class="app">
     <header class="top">
       <div class="brand">
-        <h1>Melodía</h1>
-        <p>Adiviná la canción</p>
+        <svg class="mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle class="mk-disc" cx="20" cy="20" r="19"/>
+          <circle class="mk-groove" cx="20" cy="20" r="14.5"/>
+          <circle class="mk-groove" cx="20" cy="20" r="11"/>
+          <circle class="mk-label" cx="20" cy="20" r="6.5"/>
+          <circle class="mk-hole" cx="20" cy="20" r="1.6"/>
+        </svg>
+        <div>
+          <h1>Melodía</h1>
+          <p>Adiviná la canción</p>
+        </div>
       </div>
       <div class="stats">
-        <div class="streak"><span class="lbl">Racha</span><span class="num" id="streak">0</span></div>
+        <div class="streak" title="Canciones acertadas seguidas"><span class="lbl">Racha</span><span class="num" id="streak">0</span></div>
         <button class="icon-btn" id="infoBtn" type="button" aria-label="Cómo se juega" aria-expanded="false" aria-controls="info">?</button>
       </div>
     </header>
 
     <section class="info" id="info" hidden>
-      <p>Escuchás el comienzo de una canción y tenés 6 intentos. Cada intento fallido o saltado desbloquea más segundos. Escribí el título y elegilo de la lista.</p>
-      <div class="scale">Segundos desbloqueados: 1 · 2 · 4 · 7 · 11 · 16</div>
+      <p>Escuchás el comienzo de una canción y tenés 6 intentos. Cada intento fallido o saltado desbloquea más segundos: 1, 2, 4, 7, 11 y 16. Escribí el título y elegilo de la lista.</p>
       <div class="legend">
         <span style="--c: var(--bad)">Incorrecta</span>
         <span style="--c: var(--close)">Mismo artista</span>
@@ -38,12 +46,13 @@
       <p>El video de YouTube se mantiene tapado hasta que termina la ronda.</p>
     </section>
 
-    <ol class="guesses" id="guesses"></ol>
-
     <div class="stage" id="stage" data-revealed="false" data-playing="false" data-loading="true">
       <div class="video"><div id="player"></div></div>
       <div class="veil" aria-hidden="true">
-        <div class="eq"><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="deck">
+          <div class="record"><span class="dot"></span></div>
+          <div class="arm"><i></i></div>
+        </div>
         <span id="veilText">Cargando reproductor…</span>
       </div>
     </div>
@@ -58,7 +67,10 @@
       <button class="skip" id="skip" type="button"></button>
     </div>
 
+    <ol class="guesses" id="guesses"></ol>
+
     <div class="search" id="search">
+      <svg class="s-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
       <input id="q" type="text" placeholder="Buscá una canción o artista…" autocomplete="off" spellcheck="false" aria-label="Buscar una canción o artista">
       <ul class="opts" id="opts" role="listbox" aria-label="Resultados"></ul>
     </div>

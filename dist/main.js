@@ -459,6 +459,7 @@
         const open = game2.over || i <= game2.stage;
         seg.classList.toggle("is-open", open);
         seg.classList.toggle("is-locked", !open);
+        seg.classList.toggle("is-current", !game2.over && i === game2.stage);
       });
       const inc = game2.nextIncrement;
       this.el.skip.replaceChildren();
@@ -482,6 +483,7 @@
     }
     setPlaying(on) {
       this.el.stage.dataset.playing = String(on);
+      this.el.play.dataset.playing = String(on);
       this.el.play.innerHTML = on ? ICON_STOP : ICON_PLAY;
       this.el.play.setAttribute("aria-label", on ? "Detener" : "Reproducir");
       this.el.fullBtn.textContent = on ? "Detener" : "Escuchar completa";
@@ -500,7 +502,9 @@
     showResult(game2) {
       const tries = game2.guesses.length;
       this.el.verdict.className = `verdict ${game2.won ? "win" : "lose"}`;
-      this.el.verdict.textContent = game2.won ? `Correcto \xB7 ${tries} ${tries === 1 ? "intento" : "intentos"}` : "Se acabaron los intentos";
+      this.el.result.classList.toggle("is-win", game2.won);
+      this.el.result.classList.toggle("is-lose", !game2.won);
+      this.el.verdict.textContent = game2.won ? `Correcto en ${tries} ${tries === 1 ? "intento" : "intentos"}` : "Se acabaron los intentos";
       this.el.answer.textContent = game2.song.title;
       this.el.answerBy.textContent = game2.song.artist;
       this.el.result.hidden = false;
@@ -544,6 +548,7 @@
         const active = !game2.over && i === game2.guesses.length;
         const li = h("li", active ? "row is-active" : "row");
         if (g) li.dataset.kind = g.kind;
+        if (g && i === game2.guesses.length - 1) li.classList.add("is-new");
         const main = h("span", "main");
         let mark = "";
         if (g) {

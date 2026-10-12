@@ -1,17 +1,19 @@
-/* Tokens de color y tipografía. Oscuro por defecto; claro si el sistema lo pide o data-theme="light". */
+/* Tokens. Oscuro por defecto; claro si el sistema lo pide o con data-theme="light". */
 :root {
   color-scheme: dark;
-  --bg: #0f111c;
-  --surface: #171a2a;
-  --surface-2: #1f2338;
-  --ink: #eceef8;
-  --muted: #8d93b2;
-  --line: #2b3050;
-  --accent: #f0ba45;
-  --accent-ink: #1a1405;
-  --good: #4cc9a0;
-  --bad: #f0647a;
-  --close: #b79cff;
+  --bg: #0d1128;
+  --surface: #151a38;
+  --surface-2: #1d2346;
+  --ink: #eef0fa;
+  --muted: #9ba1c6;
+  --line: #2d3466;
+  --accent: #f2bb4a;
+  --accent-ink: #1b1404;
+  --good: #4fd1a5;
+  --bad: #f2677d;
+  --close: #b9a0ff;
+  --vinyl: #080a15;
+  --vinyl-hi: #181c36;
 
   --font-display: 'Gloock', Georgia, 'Times New Roman', serif;
   --font-body: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -21,31 +23,31 @@
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
     color-scheme: light;
-    --bg: #edeff6;
+    --bg: #eceff9;
     --surface: #ffffff;
-    --surface-2: #e3e6f2;
-    --ink: #161a33;
-    --muted: #5a6082;
-    --line: #cbd0e3;
+    --surface-2: #e2e6f5;
+    --ink: #161a36;
+    --muted: #596085;
+    --line: #c9cfe6;
     --accent: #e5a82a;
     --accent-ink: #231a04;
-    --good: #14916b;
-    --bad: #c7324e;
-    --close: #6c4fd6;
+    --good: #12906a;
+    --bad: #c4304c;
+    --close: #6a4cd4;
   }
 }
 
 :root[data-theme="light"] {
   color-scheme: light;
-  --bg: #edeff6;
+  --bg: #eceff9;
   --surface: #ffffff;
-  --surface-2: #e3e6f2;
-  --ink: #161a33;
-  --muted: #5a6082;
-  --line: #cbd0e3;
+  --surface-2: #e2e6f5;
+  --ink: #161a36;
+  --muted: #596085;
+  --line: #c9cfe6;
   --accent: #e5a82a;
   --accent-ink: #231a04;
-  --good: #14916b;
-  --bad: #c7324e;
-  --close: #6c4fd6;
+  --good: #12906a;
+  --bad: #c4304c;
+  --close: #6a4cd4;
 }

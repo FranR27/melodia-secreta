@@ -3,13 +3,17 @@
 html, body { min-height: 100%; margin: 0; }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(820px 380px at 90% -140px, color-mix(in srgb, var(--accent) 12%, transparent), transparent 70%),
+    radial-gradient(640px 360px at -12% 22%, color-mix(in srgb, var(--close) 10%, transparent), transparent 70%);
+  background-repeat: no-repeat;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 15px;
   line-height: 1.45;
   padding-inline: 16px;
-  padding-block: 20px 40px;
+  padding-block: 22px 44px;
 }
 
 button, input { font: inherit; color: inherit; }
