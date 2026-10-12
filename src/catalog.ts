@@ -2,7 +2,7 @@ import raw from '../data/songs.json';
 import type { CatalogEntry, Song } from './types';
 
 const STATIC_CATALOG = raw as unknown as CatalogEntry[];
-const CLIENT_CACHE_KEY = 'melodia-secreta:catalog:v1';
+const CLIENT_CACHE_KEY = 'melodia-secreta:catalog:v2';
 const CLIENT_CACHE_TTL = 24 * 60 * 60 * 1000;
 const MAX_REMOTE_ENTRIES = 1500;
 

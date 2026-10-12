@@ -42,7 +42,7 @@
 
   // src/catalog.ts
   var STATIC_CATALOG = songs_default;
-  var CLIENT_CACHE_KEY = "melodia-secreta:catalog:v1";
+  var CLIENT_CACHE_KEY = "melodia-secreta:catalog:v2";
   var CLIENT_CACHE_TTL = 24 * 60 * 60 * 1e3;
   var MAX_REMOTE_ENTRIES = 1500;
   var catalog = mergeCatalog(STATIC_CATALOG, []);

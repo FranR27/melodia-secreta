@@ -79,7 +79,9 @@ Si usás un flujo de GitHub Actions para compilar, asegurate de publicar el `dis
 
 ## Funcionamiento del catálogo
 
-- El Worker busca videos con `videoEmbeddable=true`, `videoSyndicated=true` y categoría Música.
+- El Worker busca videos con `videoEmbeddable=true`, `videoSyndicated=true` y categoría Música, ordenados por vistas.
+- Después descarta lo que no sirve para jugar: mixes, playlists, en vivo, karaokes, remixes, covers, discos completos, canales que no son un artista y títulos sin formato "Artista - Título" (salvo canales VEVO o "Artista - Topic").
+- Con una segunda consulta (`videos.list`, 1 unidad de cuota por cada 50 videos) verifica que cada video sea público, incrustable y dure entre 2 y 9 minutos.
 - Se eliminan duplicados por ID de video y se normalizan títulos/artistas para reducir canciones repetidas.
 - El título y el artista se infieren de los metadatos del video y del canal. YouTube no garantiza metadatos musicales uniformes, por lo que puede haber algún resultado incorrectamente etiquetado.
 - Los videos pueden eliminarse, restringirse o cambiar sus permisos. El juego omite los que fallan al cargar durante la sesión.
